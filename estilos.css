@@ -1,0 +1,13 @@
+#sopa{
+    margin: auto;
+    border: 1px solid red;
+}
+
+#contenedor{
+    margin: auto;
+    width: 610px;
+    height: 610px;
+    padding: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+}

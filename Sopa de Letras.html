@@ -1,0 +1,60 @@
+<html> 
+<script>
+var WIDTH = 500;
+var HEIGHT = 500;
+var ancho = 15;
+var alto = 15;
+var tamanhocelda = 30;
+function inicializa() {
+    c = document.getElementById('myCanvas');
+    ctx = c.getContext('2d');
+    rect = c.getBoundingClientRect();
+    offsetX = rect.left;
+    offsetY = rect.top;
+    crear_tablero();
+}
+
+var letras = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var tablero = new Array(alto);
+
+function reconocer(){
+    
+}
+
+function updateCanvas(){
+    ctx.fillStyle = 'black';
+    ctx.font = "20px Arial";
+    ctx.clearRect(rect.left, rect.top, rect.right, rect.bottom);
+    for (var i = 0;i<alto; i++)
+    for (var j = 0;j<ancho; j++){
+        if (tablero[i][j]=='I')
+            ctx.fillText(tablero[i][j],j*tamanhocelda+tamanhocelda*0.45,i*tamanhocelda+tamanhocelda*0.75);
+        else
+            ctx.fillText(tablero[i][j],j*tamanhocelda+tamanhocelda*0.25,i*tamanhocelda+tamanhocelda*0.75);
+        ctx.beginPath();
+        ctx.strokeColor = 'black';
+        ctx.rect(i*tamanhocelda, j*tamanhocelda, tamanhocelda, tamanhocelda);
+        ctx.stroke();
+    }
+}
+
+function crear_tablero(t){
+    for (var i = 0;i<alto; i++){
+        tablero[i] = new Array(ancho);
+        for (var j = 0;j<ancho; j++){
+            tablero[i][j] = letras[Math.round(Math.random()*25)];
+        }
+    }
+    updateCanvas();
+}
+</script> 
+<body>
+    <canvas id = 'myCanvas'
+width = '500'
+height = '500'
+style = 'border:1px solid #c3c3c3;'> </canvas> 
+
+<script>
+    inicializa();
+</script>
+</body></html>
